@@ -150,7 +150,7 @@ function autoFillPLZ() {
       localStorage.setItem(counterKey, count);
 
       const belegnummer = `EBE-${today}-${String(count).padStart(3, '0')}`;
-      const pdf = new jsPDF({ unit: 'mm', format: [80, 230] });
+      const pdf = new jsPDF({ unit: 'mm', format: [80, 200] });
       let y = 10;
       const margin = 5;
       const maxWidth = 70;
@@ -179,9 +179,9 @@ function autoFillPLZ() {
       }
 
       // Kopfbereich
-      addCenteredText('Rechnung zur Fahrausweisprüfung', 10);
-      addCenteredText(belegnummer, 16, true);
-      addCenteredText('bei Rückfragen und Zahlungen angeben', 9);
+      addCenteredText('Rechnung zur Fahrausweisprüfung', 8);
+      addCenteredText(belegnummer, 14, true);
+      addCenteredText('bei Rückfragen und Zahlungen angeben', 7);
       y += 2;
 
       // Fahrgastdaten
@@ -201,21 +201,22 @@ addLeftText(`Vorname: ${data.vorname}`);
 
       // Forderung
       addLeftText('Gemäß § 9 der gemeinsamen Beförderungsbedingungen im VVS beträgt unsere Forderung:');
-      addCenteredText('60,00 EUR', 16, true);
-      addCenteredText('zahlbar innerhalb von 14 Tagen', 10, true);
+      addCenteredText('60,00 EUR', 14, true);
+      addCenteredText('zahlbar innerhalb von 14 Tagen', 8, true);
       addLeftText(`Bereits gezahlt: ${parseFloat(data.zahlung).toFixed(2)} EUR`);
       y += 2;
 
       // Rechtshinweise
-      addLeftText('Es erfolgt in jedem Fall eine Prüfung, ob bereits Forderungen gegen Sie gerichtet wurden. Die Begleichung der Forderung ohne konkrete Zuordnung Ihrer Identität stellt keine Erfüllung dar. Das Fahren ohne gültigen Fahrausweis stellt eine Straftat gem. § 265a StGB dar. Es kann zu strafrechtlichen Konsequenzen kommen. Ihre Daten werden für die Bearbeitung des erhöhten Beförderungsentgeltes in Einklang mit dem Bundesdatenschutzgesetz erhoben und gespeichert.', 8);
+     addLeftText('Es erfolgt in jedem Fall eine Prüfung, ob bereits Forderungen gegen Sie gerichtet wurden. Die Begleichung der Forderung ohne konkrete Zuordnung Ihrer Identität stellt keine Erfüllung dar. Das Fahren ohne gültigen Fahrausweis stellt eine Straftat gem. § 265a StGB dar. Es kann zu strafrechtlichen Konsequenzen kommen. Ihre Daten werden für die Bearbeitung des erhöhten Beförderungsentgeltes in Einklang mit der DSGVO erhoben und gespeichert.', 8); 
       y += 2;
+
 
       // Gültigkeitshinweis
       addCenteredText(`Gültig als Fahrschein am ${formatDate(data.datum)} bis Fahrtende`, 9, true);
       y += 2;
 
       // Zahlungsinformationen
-      addLeftText('Bankverbindung:', 9, true);
+      addLeftText('Bankverbindung:', 7, true);
       addLeftText('Deutsche Bank');
       addLeftText('IBAN: DE1234567890');
       addLeftText('BIC: ABC123');
@@ -223,7 +224,7 @@ addLeftText(`Vorname: ${data.vorname}`);
       y += 2;
 
       // Kontaktinformationen
-      addLeftText('Kontakt:', 9, true);
+      addLeftText('Kontakt:', 7, true);
       addLeftText('Prüfdienst');
       addLeftText('E-Mail: prüfdienst@abc.de');
       addLeftText('Telefon: 0711 12345');
@@ -242,4 +243,3 @@ window.onload = function() {
   </script>
 </body>
 </html>
-
